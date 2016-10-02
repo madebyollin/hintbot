@@ -1,3 +1,9 @@
+# input data
+input_iconsets/
+
+# weights
+*.h5
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
