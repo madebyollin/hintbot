@@ -22,7 +22,7 @@ def loadImages(datadir, maxDirectoryCount=10):
                 # print("got", len(inputSlices), "input splices and",len(targetSlices),"targetSlices")
                 inputImages.extend(inputSlices)
                 targetImages.extend(targetSlices)
-            maxDirectoryCount += 1
+            maxDirectoryCount -= 1
     return (np.asarray(inputImages), np.asarray(targetImages))
 
 def sliceImages(inputImage, targetImage):
