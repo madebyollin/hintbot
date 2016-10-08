@@ -33,7 +33,7 @@ hintbot.summary()
 x = inputImages
 
 # Train
-hintbot.fit(x, x, nb_epoch=100, batch_size=1, shuffle=True, validation_data=(x, x))
+hintbot.fit(x, x, nb_epoch=400, batch_size=1, shuffle=True, validation_data=(x, x))
 
 # Predict
 test_predictions = hintbot.predict(x)
@@ -49,7 +49,15 @@ ax.get_yaxis().set_visible(False)
 
 # Display hinting
 ax = plt.subplot(222)
-plt.imshow(test_predictions[0])
+
+prediction = test_predictions[0]
+print(prediction.min())
+print(prediction.max())
+print(prediction)
+print(x[0].dtype)
+prediction = (prediction.clip(0,255)).astype(np.uint8)
+
+plt.imshow(prediction)
 ax.get_xaxis().set_visible(False)
 ax.get_yaxis().set_visible(False)
 
