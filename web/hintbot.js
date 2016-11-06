@@ -33,14 +33,13 @@ function init() {
             reader.onload = function() {
                 var base64 = this.result;
                 var rgba = base64toRGBA(base64);
-                console.log(rgba);
-
+                var flatrgba =  new Float32Array([].concat.apply([], rgba));
                 // input data object keyed by names of the input layers
                 // or `input` for Sequential models
                 // values are the flattened Float32Array data
                 // (input tensor shapes are specified in the model config)
                 const inputData = {
-                    'input_1': rgba
+                    'input_1': flatrgba
                 }
 
                 // make predictions
