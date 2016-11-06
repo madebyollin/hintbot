@@ -1,0 +1,135 @@
+body {
+    font-family: "Inconsolata", "Monaco", sans-serif;
+    font-size: 1.2em;
+    min-width: 640px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#wrapper {
+    margin-top: 10vh;
+    text-align: center;
+    height: 1em;
+    transition: .1s ease all;
+}
+
+#fileWrapper {
+    margin-top: 10vh;
+    text-align: center;
+    height: 1em;
+    transition: .1s ease all;
+}
+
+#fileInput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#inputLabel {
+    cursor: pointer;
+}
+
+.button {
+    font-size: 1.5em;
+    padding: .5em 1em;
+    line-height: 1.5em;
+    color: white;
+    background: rgb(32, 160, 255);
+    text-decoration: none;
+    border-radius: 128px;
+    transition: .1s ease all;
+    box-shadow: 0px 8px 0px -8px white;
+}
+
+.button:hover {
+    box-shadow: 0px 8px 16px -8px rgba(32, 160, 255, 0.5);
+    font-size: 1.525em;
+}
+
+.button:active {
+    box-shadow: 0px 8px 16px -8px white;
+    background: rgb(32, 128, 240);
+    font-size: 1.475em;
+    color: hsl(0, 0%, 95%);
+}
+
+a.button input {
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    padding: none;
+}
+
+.bigButton {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+#spinner {
+    display: block;
+    position: absolute;
+    left:50%;
+    margin-left: -32px;
+    top: 20vh;
+    background-image: url("spinner.png");
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#footer {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 1.5em;
+    width: 100%;
+    color: hsl(0, 0%, 50%);
+    z-index: -1;
+}
+
+#footer a {
+    text-decoration: none;
+    color: rgb(32, 160, 255);
+}
+
+#footer a:hover {
+    text-decoration: none;
+    color: rgb(32, 128, 240);
+}
