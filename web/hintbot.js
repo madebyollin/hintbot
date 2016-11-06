@@ -9,12 +9,34 @@ function loadHintBot() {
     })
 }
 
+function displayImage(image) {
+    // Frankensteined from http://stackoverflow.com/questions/22823752/creating-image-from-array-in-javascript-and-html5
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+
+    canvas.width = 32;
+    canvas.height = 32;
+
+    // create imageData object
+    var idata = ctx.createImageData(32, 32);
+
+    // set our buffer as source
+    idata.data.set(image);
+
+    // update canvas with new data
+    ctx.putImageData(idata, 0, 0);
+    var dataUri = canvas.toDataURL();
+    var img = document.createElement("img");
+    img.src = dataUri;
+    document.getElementById("display").appendChild(img);
+}
+
 function base64toRGBA(image) {
     // Frankensteined from http://stackoverflow.com/questions/8751020/how-to-get-a-pixels-x-y-coordinate-color-from-an-image
     var img = document.createElement("img");
     img.src = image;
     var canvas = document.createElement("canvas");
-    console.log("image has width " + img.width +" and height " + img.height);
+    console.log("image has width " + img.width + " and height " + img.height);
     canvas.width = img.width;
     canvas.height = img.height;
     canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
@@ -51,6 +73,9 @@ function init() {
                     // outputData['fc1000']
                     console.log("Model output:");
                     console.log(JSON.stringify(outputData, null, 4));
+                    var raw = outputData.convolution2d_7;
+                    var clean = new Uint8ClampedArray(raw);
+                    displayImage(clean);
                 }).catch(err => {
                     console.log(err);
                 });
