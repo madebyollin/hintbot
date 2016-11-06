@@ -125,7 +125,7 @@ a.button input {
 }
 
 #display {
-    margin-top: 15vh;
+    margin-top: 15vh !important;
     text-align: center;
     margin: 0 auto;
     width: 400px;
