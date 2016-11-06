@@ -50,7 +50,7 @@ function init() {
                     // e.g.,
                     // outputData['fc1000']
                     console.log("Model output:");
-                    console.log(JSON.stringify(outputData.output, null, 4));
+                    console.log(JSON.stringify(outputData, null, 4));
                 }).catch(err => {
                     console.log(err);
                 });

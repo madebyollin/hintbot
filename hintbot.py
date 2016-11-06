@@ -41,7 +41,7 @@ def createModel():
 
     # Model layer stack
     x = original
-    x = ZeroPadding2D(padding=(2, 2))(x)
+    # x = ZeroPadding2D(padding=(2, 2))(x)
     x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
     x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
     x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
@@ -50,7 +50,7 @@ def createModel():
     x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
     x = MaxPooling2D((2, 2), border_mode='same')(x)
     x = Convolution2D(4, 3, 3, activation='relu', border_mode='same')(x)
-    x = Cropping2D(cropping=((1, 1), (1,1)))(x)
+    # x = Cropping2D(cropping=((1, 1), (1,1)))(x)
     downscaled = x
 
     # Compile model
