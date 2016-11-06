@@ -124,6 +124,10 @@ a.button input {
     z-index: -1;
 }
 
+#display {
+    text-align: center;
+}
+
 #footer a {
     text-decoration: none;
     color: rgb(32, 160, 255);
