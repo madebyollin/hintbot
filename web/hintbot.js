@@ -17,7 +17,7 @@ function init() {
         document.getElementById("fileInput").addEventListener("change", function() {
             var reader = new FileReader();
             reader.onload = function() {
-                var array = new Uint8Array(this.result),
+                var array = new Uint8Array(this.result);
                 console.log(array);
 
                 // input data object keyed by names of the input layers
