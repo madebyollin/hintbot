@@ -2,7 +2,7 @@ function loadHintBot() {
     return new KerasJS.Model({
         filepaths: {
             model: 'web/hintbot.json',
-            weights: 'web/hintbot.buf',
+            weights: 'web/hintbot_weights.buf',
             metadata: 'web/hintbot_metadata.json'
         },
         gpu: true
