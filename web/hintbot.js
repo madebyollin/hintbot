@@ -78,6 +78,7 @@ function init() {
                     var raw = outputData.convolution2d_7;
                     var clean = new Uint8ClampedArray(raw);
                     displayImage(clean, hinted, 16, 16);
+                    document.getElementById("display").classList.remove("hidden");
                 }).catch(err => {
                     console.log(err);
                 });
