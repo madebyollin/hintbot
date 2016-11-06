@@ -9,6 +9,20 @@ function loadHintBot() {
     })
 }
 
+function base64toRGBA(image) {
+    // Frankensteined from http://stackoverflow.com/questions/8751020/how-to-get-a-pixels-x-y-coordinate-color-from-an-image
+    var img = document.createElement("img");
+    img.src = image;
+    var canvas = document.createElement("canvas");
+    console.log("image has width " + img.width +" and height " + img.height);
+    canvas.width = img.width;
+    canvas.height = img.height;
+    canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+    console.log("got image data:" + )
+    var imageData = canvas.getContext('2d').getImageData(0, 0, img.width, img.height);
+    return imageData
+}
+
 function init() {
     hintbot = loadHintBot();
     hintbot.ready().then(() => {
@@ -17,15 +31,16 @@ function init() {
         document.getElementById("fileInput").addEventListener("change", function() {
             var reader = new FileReader();
             reader.onload = function() {
-                var array = new Uint8Array(this.result);
-                console.log(array);
+                var base64 = this.result;
+                var rgba = base64toRGBA(base64);
+                console.log(rgba);
 
                 // input data object keyed by names of the input layers
                 // or `input` for Sequential models
                 // values are the flattened Float32Array data
                 // (input tensor shapes are specified in the model config)
                 const inputData = {
-                    'input_1': array
+                    'input_1': rgba
                 }
 
                 // make predictions
@@ -41,7 +56,7 @@ function init() {
                 });
             }
 
-            reader.readAsArrayBuffer(this.files[0]);
+            reader.readAsDataURL(this.files[0]);
         }, false);
     });
 }
