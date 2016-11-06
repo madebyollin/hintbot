@@ -18,9 +18,9 @@ function base64toRGBA(image) {
     canvas.width = img.width;
     canvas.height = img.height;
     canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
-    console.log("got image data:" + )
     var imageData = canvas.getContext('2d').getImageData(0, 0, img.width, img.height);
-    return imageData
+    console.log("got image data:" + imageData);
+    return imageData;
 }
 
 function init() {
