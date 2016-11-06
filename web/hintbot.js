@@ -14,11 +14,11 @@ function displayImage(image) {
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
 
-    canvas.width = 32;
-    canvas.height = 32;
+    canvas.width = 16;
+    canvas.height = 16;
 
     // create imageData object
-    var idata = ctx.createImageData(32, 32);
+    var idata = ctx.createImageData(16, 16);
 
     // set our buffer as source
     idata.data.set(image);
