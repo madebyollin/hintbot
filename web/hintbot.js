@@ -12,8 +12,8 @@ function loadHintBot() {
 function init() {
     hintbot = loadHintBot();
     hintbot.ready().then(() => {
-        document.getElementById("spinner").addClass("hidden");
-        document.getElementById("wrapper").removeClass("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+        document.getElementById("wrapper").classList.remove("hidden");
         // input data object keyed by names of the input layers
         // or `input` for Sequential models
         // values are the flattened Float32Array data
