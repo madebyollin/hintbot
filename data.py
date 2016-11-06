@@ -1,6 +1,7 @@
 import os
 import skimage.io as io
 import numpy as np
+import colorutils
 
 inputImages = []
 targetImages = []
@@ -25,14 +26,20 @@ def loadImages(datadir, maxDirectoryCount=10):
             maxDirectoryCount -= 1
     return (np.asarray(inputImages), np.asarray(targetImages))
 
+def loadImagesHSVA(datadir, maxDirectoryCount=10):
+    x,y = loadImages(datadir, maxDirectoryCount)
+    x = np.asarray([colorutils.RGBAtoHSVA(image) for image in x])
+    y = np.asarray([colorutils.RGBAtoHSVA(image) for image in y])
+    return (x,y)
+
 def sliceImages(inputImage, targetImage):
     inputSlices = []
     targetSlices = []
     sliceSize = 32
-    for y in range(0,inputImage.shape[1]/sliceSize):
-        for x in range(0,inputImage.shape[0]/sliceSize):
+    for y in range(0,inputImage.shape[1]//sliceSize):
+        for x in range(0,inputImage.shape[0]//sliceSize):
             inputSlice = inputImage[x*sliceSize:(x+1)*sliceSize,y*sliceSize:(y+1)*sliceSize]
-            targetSlice = targetImage[x*sliceSize/2:(x+1)*sliceSize/2,y*sliceSize/2:(y+1)*sliceSize/2]
+            targetSlice = targetImage[x*sliceSize//2:(x+1)*sliceSize//2,y*sliceSize//2:(y+1)*sliceSize//2]
             # only add slices if they're not just empty space
             if (np.any(targetSlice)):
                 inputSlices.append(inputSlice)
