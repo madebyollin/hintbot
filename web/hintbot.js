@@ -38,6 +38,7 @@ function init() {
                 // or `input` for Sequential models
                 // values are the flattened Float32Array data
                 // (input tensor shapes are specified in the model config)
+                console.log("flatrgba:" + flatrgba);
                 const inputData = {
                     'input_1': flatrgba
                 }
