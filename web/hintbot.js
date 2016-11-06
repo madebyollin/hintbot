@@ -9,16 +9,16 @@ function loadHintBot() {
     })
 }
 
-function displayImage(image, img) {
+function displayImage(image, img, w, h) {
     // Frankensteined from http://stackoverflow.com/questions/22823752/creating-image-from-array-in-javascript-and-html5
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
 
-    canvas.width = 16;
-    canvas.height = 16;
+    canvas.width = w;
+    canvas.height = h;
 
     // create imageData object
-    var idata = ctx.createImageData(16, 16);
+    var idata = ctx.createImageData(w, h);
 
     // set our buffer as source
     idata.data.set(image);
@@ -57,7 +57,7 @@ function init() {
 
                 var original = document.getElementById("original");
                 var hinted = document.getElementById("hinted");
-                displayImage(new Uint8ClampedArray(flatrgba), original);
+                displayImage(new Uint8ClampedArray(flatrgba), original, 32, 32);
                 // input data object keyed by names of the input layers
                 // or `input` for Sequential models
                 // values are the flattened Float32Array data
@@ -77,7 +77,7 @@ function init() {
                     console.log(JSON.stringify(outputData, null, 4));
                     var raw = outputData.convolution2d_7;
                     var clean = new Uint8ClampedArray(raw);
-                    displayImage(clean, hinted);
+                    displayImage(clean, hinted, 16, 16);
                 }).catch(err => {
                     console.log(err);
                 });
