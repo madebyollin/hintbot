@@ -124,18 +124,25 @@ a.button input {
     width: 400px;
 }
 
+#description {
+    width: 256px;
+    color: hsl(0, 0%, 75%);
+}
+
 #display img {
     image-rendering: pixelated;
     width:16px;
     height:16px
 }
 
-#footer a {
+#footer a,
+#description a {
     text-decoration: none;
     color: rgb(32, 160, 255);
 }
 
-#footer a:hover {
+#footer a:hover,
+#description a:hover {
     text-decoration: none;
     color: rgb(32, 128, 240);
 }
