@@ -126,7 +126,8 @@ a.button input {
 
 #description {
     width: 256px;
-    color: hsl(0, 0%, 75%);
+    margin: 0 auto;
+    color: hsl(0, 0%, 50%);
 }
 
 #display img {
