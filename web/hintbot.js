@@ -78,7 +78,7 @@ function init() {
                 hintbot.predict(inputData).then(outputData => {
                     var prediction = new Uint8ClampedArray(getFirstProperty(outputData));
                     displayImage(prediction, hinted, 16, 16);
-                    show(display);
+                    show("display");
                 }).catch(err => {
                     console.log(err);
                 });
