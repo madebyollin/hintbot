@@ -34,12 +34,10 @@ function base64toRGBA(image) {
     var img = document.createElement("img");
     img.src = image;
     var canvas = document.createElement("canvas");
-    console.log("image has width " + img.width + " and height " + img.height);
     canvas.width = img.width;
     canvas.height = img.height;
     canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
     var imageData = canvas.getContext('2d').getImageData(0, 0, img.width, img.height).data;
-    console.log("got image data:" + JSON.stringify(imageData, null, 4));
     return imageData;
 }
 
@@ -76,7 +74,7 @@ function init() {
 
                 displayImage(new Uint8ClampedArray(flatrgba), original, 32, 32);
 
-                var inputData = {'icon': flatrgba};
+                var inputData = {'input_1': flatrgba};
                 hintbot.predict(inputData).then(outputData => {
                     var prediction = new Uint8ClampedArray(getFirstProperty(outputData));
                     displayImage(prediction, hinted, 16, 16);
