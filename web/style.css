@@ -124,6 +124,12 @@ a.button input {
     width: 400px;
 }
 
+#display img {
+    image-rendering: pixelated;
+    width:16px;
+    height:16px
+}
+
 #footer a {
     text-decoration: none;
     color: rgb(32, 160, 255);
