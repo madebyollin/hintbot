@@ -43,11 +43,27 @@ function base64toRGBA(image) {
     return imageData;
 }
 
+function hide(id) {
+    document.getElementById(id).classList.add("hidden");
+}
+
+function show(id) {
+    document.getElementById(id).classList.remove("hidden");
+}
+
+function getFirstProperty(obj) {
+    for (var i in obj) {
+        return obj[i];
+    }
+}
+
 function init() {
     hintbot = loadHintBot();
     hintbot.ready().then(() => {
-        document.getElementById("spinner").classList.add("hidden");
-        document.getElementById("wrapper").classList.remove("hidden");
+        // Show file upload button
+        hide("spinner");
+        show("fileInputWrapper");
+        // Enable file uploads
         document.getElementById("fileInput").addEventListener("change", function() {
             var reader = new FileReader();
             reader.onload = function() {
@@ -57,28 +73,14 @@ function init() {
 
                 var original = document.getElementById("original");
                 var hinted = document.getElementById("hinted");
-                displayImage(new Uint8ClampedArray(flatrgba), original, 32, 32);
-                // input data object keyed by names of the input layers
-                // or `input` for Sequential models
-                // values are the flattened Float32Array data
-                // (input tensor shapes are specified in the model config)
-                console.log("flatrgba:" + flatrgba);
-                const inputData = {
-                    'input_1': flatrgba
-                }
 
-                // make predictions
-                // outputData is an object keyed by names of the output layers
-                // or `output` for Sequential models
+                displayImage(new Uint8ClampedArray(flatrgba), original, 32, 32);
+
+                var inputData = {'icon': flatrgba};
                 hintbot.predict(inputData).then(outputData => {
-                    // e.g.,
-                    // outputData['fc1000']
-                    console.log("Model output:");
-                    console.log(JSON.stringify(outputData, null, 4));
-                    var raw = outputData.convolution2d_7;
-                    var clean = new Uint8ClampedArray(raw);
-                    displayImage(clean, hinted, 16, 16);
-                    document.getElementById("display").classList.remove("hidden");
+                    var prediction = new Uint8ClampedArray(getFirstProperty(outputData));
+                    displayImage(prediction, hinted, 16, 16);
+                    show(display);
                 }).catch(err => {
                     console.log(err);
                 });

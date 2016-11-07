@@ -15,14 +15,7 @@ body {
     visibility: hidden;
 }
 
-#wrapper {
-    margin-top: 10vh;
-    text-align: center;
-    height: 1em;
-    transition: .1s ease all;
-}
-
-#fileWrapper {
+#fileInputWrapper {
     margin-top: 10vh;
     text-align: center;
     height: 1em;
