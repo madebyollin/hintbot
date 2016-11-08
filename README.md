@@ -3,7 +3,7 @@ A CNN written in keras to hint icons automatically.  Live in-browser at [madebyo
 
 **What is hinting?**
 
-Hinting is the process of adapting the style of icons to be clear at small sizes.  Here's an example:
+Hinting is the process of making icons crisp at small sizes.  Here's an example:
 
 ![](readme_images/comparison.png)
 
@@ -16,9 +16,9 @@ Here's how Hintbot performs at present (images shown are from test data; the mod
 ![](readme_images/model_progress.png)
 
 The model output is substantially better than a standard downscale.  However, it still falls short of human performance (for now).
-This is not an indicator that the human performance is unreachable–rather, it's just a sign of my own lack of experience in building models.  It probably needs more parameters.
+This is not an indicator that the human performance is unreachable–rather, it's just a sign of my own lack of experience in building models.  It probably needs more parameters, or something.
 
-**How does it work in-browser?**
+**Wait, how does it work in-browser?**
 
 I've used [keras.js](https://github.com/transcranial/keras-js/) to do the processing client-side.  It loads and renders very quickly because the model (and size of input/output) is very small.
 
