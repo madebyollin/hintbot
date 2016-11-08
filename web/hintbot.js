@@ -61,6 +61,7 @@ function init() {
         // Show file upload button
         hide("spinner");
         show("fileInputWrapper");
+        show("description");
         // Enable file uploads
         document.getElementById("fileInput").addEventListener("change", function() {
             var reader = new FileReader();
