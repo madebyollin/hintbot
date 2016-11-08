@@ -7,8 +7,8 @@ Hinting is the process of making icons crisp at small sizes.  Here's an example:
 
 ![](readme_images/comparison.png)
 
-For the entire history of civilization, men and women have laboriously pushed pixels to hint their icons by hand.
-<br/> But no longer!
+For all of human history, designers have laboriously pushed pixels to hint icons by hand.
+<br/>But no longer!
 
 **How well does Hintbot work?**
 
@@ -16,12 +16,12 @@ Here's how Hintbot performs at present (images shown are from test data; the mod
 
 ![](readme_images/model_progress.png)
 
-The model output is substantially better than a standard downscale.  However, it still falls short of human performance (for now).
-This is not an indicator that the human performance is unreachable–rather, it's just a sign of my own lack of experience in building models.  It probably needs more parameters, or something.
+The model output is *substantially* better than a standard downscale.  However, it still falls short of human performance (for now).
+This is not an indicator that the human performance is unreachable–rather, it's a sign that this project is still young.
 
 **Wait, how does it work in-browser?**
 
-I've used [keras.js](https://github.com/transcranial/keras-js/) to do the processing client-side.  It loads and renders very quickly because the model (and size of input/output) is very small.
+I've used [keras.js](https://github.com/transcranial/keras-js/) to do the processing client-side.  The size of the model (it's designed around small inputs/outputs and has comparatively few parameters) allows it to render output instantly.
 
 **Is this really an important problem?**
 
