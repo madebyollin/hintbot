@@ -8,7 +8,7 @@ Hinting is the process of making icons crisp at small sizes.  Here's an example:
 ![](readme_images/comparison.png)
 
 For the entire history of civilization, men and women have laboriously pushed pixels to hint their icons by hand.
-But no longer!
+<br/> But no longer!
 
 **How well does Hintbot work?**
 
