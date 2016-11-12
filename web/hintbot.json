@@ -1,1 +1,222 @@
-{"class_name": "Model", "config": {"name": "model_1", "layers": [{"name": "input_1", "class_name": "InputLayer", "config": {"sparse": false, "name": "input_1", "batch_input_shape": [null, 32, 32, 4], "input_dtype": "float32"}, "inbound_nodes": []}, {"name": "convolution2d_1", "class_name": "Convolution2D", "config": {"nb_filter": 16, "name": "convolution2d_1", "nb_col": 3, "init": "glorot_uniform", "subsample": [1, 1], "W_regularizer": null, "b_constraint": null, "W_constraint": null, "b_regularizer": null, "nb_row": 3, "dim_ordering": "tf", "activation": "relu", "bias": true, "border_mode": "same", "trainable": true, "activity_regularizer": null}, "inbound_nodes": [[["input_1", 0, 0]]]}, {"name": "convolution2d_2", "class_name": "Convolution2D", "config": {"nb_filter": 16, "name": "convolution2d_2", "nb_col": 3, "init": "glorot_uniform", "subsample": [1, 1], "W_regularizer": null, "b_constraint": null, "W_constraint": null, "b_regularizer": null, "nb_row": 3, "dim_ordering": "tf", "activation": "relu", "bias": true, "border_mode": "same", "trainable": true, "activity_regularizer": null}, "inbound_nodes": [[["convolution2d_1", 0, 0]]]}, {"name": "convolution2d_3", "class_name": "Convolution2D", "config": {"nb_filter": 16, "name": "convolution2d_3", "nb_col": 3, "init": "glorot_uniform", "subsample": [1, 1], "W_regularizer": null, "b_constraint": null, "W_constraint": null, "b_regularizer": null, "nb_row": 3, "dim_ordering": "tf", "activation": "relu", "bias": true, "border_mode": "same", "trainable": true, "activity_regularizer": null}, "inbound_nodes": [[["convolution2d_2", 0, 0]]]}, {"name": "convolution2d_4", "class_name": "Convolution2D", "config": {"nb_filter": 16, "name": "convolution2d_4", "nb_col": 3, "init": "glorot_uniform", "subsample": [1, 1], "W_regularizer": null, "b_constraint": null, "W_constraint": null, "b_regularizer": null, "nb_row": 3, "dim_ordering": "tf", "activation": "relu", "bias": true, "border_mode": "same", "trainable": true, "activity_regularizer": null}, "inbound_nodes": [[["convolution2d_3", 0, 0]]]}, {"name": "convolution2d_5", "class_name": "Convolution2D", "config": {"nb_filter": 16, "name": "convolution2d_5", "nb_col": 3, "init": "glorot_uniform", "subsample": [1, 1], "W_regularizer": null, "b_constraint": null, "W_constraint": null, "b_regularizer": null, "nb_row": 3, "dim_ordering": "tf", "activation": "relu", "bias": true, "border_mode": "same", "trainable": true, "activity_regularizer": null}, "inbound_nodes": [[["convolution2d_4", 0, 0]]]}, {"name": "convolution2d_6", "class_name": "Convolution2D", "config": {"nb_filter": 16, "name": "convolution2d_6", "nb_col": 3, "init": "glorot_uniform", "subsample": [1, 1], "W_regularizer": null, "b_constraint": null, "W_constraint": null, "b_regularizer": null, "nb_row": 3, "dim_ordering": "tf", "activation": "relu", "bias": true, "border_mode": "same", "trainable": true, "activity_regularizer": null}, "inbound_nodes": [[["convolution2d_5", 0, 0]]]}, {"name": "maxpooling2d_1", "class_name": "MaxPooling2D", "config": {"dim_ordering": "tf", "name": "maxpooling2d_1", "strides": [2, 2], "border_mode": "same", "pool_size": [2, 2], "trainable": true}, "inbound_nodes": [[["convolution2d_6", 0, 0]]]}, {"name": "convolution2d_7", "class_name": "Convolution2D", "config": {"nb_filter": 4, "name": "convolution2d_7", "nb_col": 3, "init": "glorot_uniform", "subsample": [1, 1], "W_regularizer": null, "b_constraint": null, "W_constraint": null, "b_regularizer": null, "nb_row": 3, "dim_ordering": "tf", "activation": "relu", "bias": true, "border_mode": "same", "trainable": true, "activity_regularizer": null}, "inbound_nodes": [[["maxpooling2d_1", 0, 0]]]}], "output_layers": [["convolution2d_7", 0, 0]], "input_layers": [["input_1", 0, 0]]}, "keras_version": "1.1.1"}
+{
+    "class_name": "Model",
+    "keras_version": "1.1.0",
+    "config": {
+        "layers": [{
+            "class_name": "InputLayer",
+            "config": {
+                "batch_input_shape": [null, null, null, 4],
+                "input_dtype": "float32",
+                "sparse": false,
+                "name": "input_1"
+            },
+            "inbound_nodes": [],
+            "name": "input_1"
+        }, {
+            "class_name": "Convolution2D",
+            "config": {
+                "W_constraint": null,
+                "b_constraint": null,
+                "name": "convolution2d_1",
+                "activity_regularizer": null,
+                "trainable": true,
+                "dim_ordering": "tf",
+                "nb_col": 3,
+                "subsample": [1, 1],
+                "init": "glorot_uniform",
+                "bias": true,
+                "nb_filter": 16,
+                "border_mode": "same",
+                "b_regularizer": null,
+                "W_regularizer": null,
+                "activation": "relu",
+                "nb_row": 3
+            },
+            "inbound_nodes": [
+                [
+                    ["input_1", 0, 0]
+                ]
+            ],
+            "name": "convolution2d_1"
+        }, {
+            "class_name": "Convolution2D",
+            "config": {
+                "W_constraint": null,
+                "b_constraint": null,
+                "name": "convolution2d_2",
+                "activity_regularizer": null,
+                "trainable": true,
+                "dim_ordering": "tf",
+                "nb_col": 3,
+                "subsample": [1, 1],
+                "init": "glorot_uniform",
+                "bias": true,
+                "nb_filter": 16,
+                "border_mode": "same",
+                "b_regularizer": null,
+                "W_regularizer": null,
+                "activation": "relu",
+                "nb_row": 3
+            },
+            "inbound_nodes": [
+                [
+                    ["convolution2d_1", 0, 0]
+                ]
+            ],
+            "name": "convolution2d_2"
+        }, {
+            "class_name": "Convolution2D",
+            "config": {
+                "W_constraint": null,
+                "b_constraint": null,
+                "name": "convolution2d_3",
+                "activity_regularizer": null,
+                "trainable": true,
+                "dim_ordering": "tf",
+                "nb_col": 3,
+                "subsample": [1, 1],
+                "init": "glorot_uniform",
+                "bias": true,
+                "nb_filter": 16,
+                "border_mode": "same",
+                "b_regularizer": null,
+                "W_regularizer": null,
+                "activation": "relu",
+                "nb_row": 3
+            },
+            "inbound_nodes": [
+                [
+                    ["convolution2d_2", 0, 0]
+                ]
+            ],
+            "name": "convolution2d_3"
+        }, {
+            "class_name": "Convolution2D",
+            "config": {
+                "W_constraint": null,
+                "b_constraint": null,
+                "name": "convolution2d_4",
+                "activity_regularizer": null,
+                "trainable": true,
+                "dim_ordering": "tf",
+                "nb_col": 3,
+                "subsample": [1, 1],
+                "init": "glorot_uniform",
+                "bias": true,
+                "nb_filter": 16,
+                "border_mode": "same",
+                "b_regularizer": null,
+                "W_regularizer": null,
+                "activation": "relu",
+                "nb_row": 3
+            },
+            "inbound_nodes": [
+                [
+                    ["convolution2d_3", 0, 0]
+                ]
+            ],
+            "name": "convolution2d_4"
+        }, {
+            "class_name": "Convolution2D",
+            "config": {
+                "W_constraint": null,
+                "b_constraint": null,
+                "name": "convolution2d_5",
+                "activity_regularizer": null,
+                "trainable": true,
+                "dim_ordering": "tf",
+                "nb_col": 3,
+                "subsample": [1, 1],
+                "init": "glorot_uniform",
+                "bias": true,
+                "nb_filter": 16,
+                "border_mode": "same",
+                "b_regularizer": null,
+                "W_regularizer": null,
+                "activation": "relu",
+                "nb_row": 3
+            },
+            "inbound_nodes": [
+                [
+                    ["convolution2d_4", 0, 0]
+                ]
+            ],
+            "name": "convolution2d_5"
+        }, {
+            "class_name": "Convolution2D",
+            "config": {
+                "W_constraint": null,
+                "b_constraint": null,
+                "name": "convolution2d_6",
+                "activity_regularizer": null,
+                "trainable": true,
+                "dim_ordering": "tf",
+                "nb_col": 3,
+                "subsample": [1, 1],
+                "init": "glorot_uniform",
+                "bias": true,
+                "nb_filter": 16,
+                "border_mode": "same",
+                "b_regularizer": null,
+                "W_regularizer": null,
+                "activation": "relu",
+                "nb_row": 3
+            },
+            "inbound_nodes": [
+                [
+                    ["convolution2d_5", 0, 0]
+                ]
+            ],
+            "name": "convolution2d_6"
+        }, {
+            "class_name": "MaxPooling2D",
+            "config": {
+                "name": "maxpooling2d_1",
+                "trainable": true,
+                "dim_ordering": "tf",
+                "pool_size": [2, 2],
+                "strides": [2, 2],
+                "border_mode": "same"
+            },
+            "inbound_nodes": [
+                [
+                    ["convolution2d_6", 0, 0]
+                ]
+            ],
+            "name": "maxpooling2d_1"
+        }, {
+            "class_name": "Convolution2D",
+            "config": {
+                "W_constraint": null,
+                "b_constraint": null,
+                "name": "convolution2d_7",
+                "activity_regularizer": null,
+                "trainable": true,
+                "dim_ordering": "tf",
+                "nb_col": 3,
+                "subsample": [1, 1],
+                "init": "glorot_uniform",
+                "bias": true,
+                "nb_filter": 4,
+                "border_mode": "same",
+                "b_regularizer": null,
+                "W_regularizer": null,
+                "activation": "relu",
+                "nb_row": 3
+            },
+            "inbound_nodes": [
+                [
+                    ["maxpooling2d_1", 0, 0]
+                ]
+            ],
+            "name": "convolution2d_7"
+        }],
+        "input_layers": [
+            ["input_1", 0, 0]
+        ],
+        "output_layers": [
+            ["convolution2d_7", 0, 0]
+        ],
+        "name": "model_1"
+    }
+}

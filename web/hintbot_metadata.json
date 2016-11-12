@@ -1,1 +1,99 @@
-[{"shape": [3, 3, 4, 16], "offset": 0, "type": "float32", "layer_name": "convolution2d_1", "length": 576, "weight_name": "convolution2d_1_W"}, {"shape": [16], "offset": 2304, "type": "float32", "layer_name": "convolution2d_1", "length": 16, "weight_name": "convolution2d_1_b"}, {"shape": [3, 3, 16, 16], "offset": 2368, "type": "float32", "layer_name": "convolution2d_2", "length": 2304, "weight_name": "convolution2d_2_W"}, {"shape": [16], "offset": 11584, "type": "float32", "layer_name": "convolution2d_2", "length": 16, "weight_name": "convolution2d_2_b"}, {"shape": [3, 3, 16, 16], "offset": 11648, "type": "float32", "layer_name": "convolution2d_3", "length": 2304, "weight_name": "convolution2d_3_W"}, {"shape": [16], "offset": 20864, "type": "float32", "layer_name": "convolution2d_3", "length": 16, "weight_name": "convolution2d_3_b"}, {"shape": [3, 3, 16, 16], "offset": 20928, "type": "float32", "layer_name": "convolution2d_4", "length": 2304, "weight_name": "convolution2d_4_W"}, {"shape": [16], "offset": 30144, "type": "float32", "layer_name": "convolution2d_4", "length": 16, "weight_name": "convolution2d_4_b"}, {"shape": [3, 3, 16, 16], "offset": 30208, "type": "float32", "layer_name": "convolution2d_5", "length": 2304, "weight_name": "convolution2d_5_W"}, {"shape": [16], "offset": 39424, "type": "float32", "layer_name": "convolution2d_5", "length": 16, "weight_name": "convolution2d_5_b"}, {"shape": [3, 3, 16, 16], "offset": 39488, "type": "float32", "layer_name": "convolution2d_6", "length": 2304, "weight_name": "convolution2d_6_W"}, {"shape": [16], "offset": 48704, "type": "float32", "layer_name": "convolution2d_6", "length": 16, "weight_name": "convolution2d_6_b"}, {"shape": [3, 3, 16, 4], "offset": 48768, "type": "float32", "layer_name": "convolution2d_7", "length": 576, "weight_name": "convolution2d_7_W"}, {"shape": [4], "offset": 51072, "type": "float32", "layer_name": "convolution2d_7", "length": 4, "weight_name": "convolution2d_7_b"}]
+[{
+    "weight_name": "convolution2d_1_W",
+    "length": 576,
+    "shape": [3, 3, 4, 16],
+    "layer_name": "convolution2d_1",
+    "offset": 0,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_1_b",
+    "length": 16,
+    "shape": [16],
+    "layer_name": "convolution2d_1",
+    "offset": 2304,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_2_W",
+    "length": 2304,
+    "shape": [3, 3, 16, 16],
+    "layer_name": "convolution2d_2",
+    "offset": 2368,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_2_b",
+    "length": 16,
+    "shape": [16],
+    "layer_name": "convolution2d_2",
+    "offset": 11584,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_3_W",
+    "length": 2304,
+    "shape": [3, 3, 16, 16],
+    "layer_name": "convolution2d_3",
+    "offset": 11648,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_3_b",
+    "length": 16,
+    "shape": [16],
+    "layer_name": "convolution2d_3",
+    "offset": 20864,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_4_W",
+    "length": 2304,
+    "shape": [3, 3, 16, 16],
+    "layer_name": "convolution2d_4",
+    "offset": 20928,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_4_b",
+    "length": 16,
+    "shape": [16],
+    "layer_name": "convolution2d_4",
+    "offset": 30144,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_5_W",
+    "length": 2304,
+    "shape": [3, 3, 16, 16],
+    "layer_name": "convolution2d_5",
+    "offset": 30208,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_5_b",
+    "length": 16,
+    "shape": [16],
+    "layer_name": "convolution2d_5",
+    "offset": 39424,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_6_W",
+    "length": 2304,
+    "shape": [3, 3, 16, 16],
+    "layer_name": "convolution2d_6",
+    "offset": 39488,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_6_b",
+    "length": 16,
+    "shape": [16],
+    "layer_name": "convolution2d_6",
+    "offset": 48704,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_7_W",
+    "length": 576,
+    "shape": [3, 3, 16, 4],
+    "layer_name": "convolution2d_7",
+    "offset": 48768,
+    "type": "float32"
+}, {
+    "weight_name": "convolution2d_7_b",
+    "length": 4,
+    "shape": [4],
+    "layer_name": "convolution2d_7",
+    "offset": 51072,
+    "type": "float32"
+}]

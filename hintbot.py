@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from keras.layers import Input, Dense, Convolution2D, MaxPooling2D, UpSampling2D, ZeroPadding2D, Cropping2D
+from keras.layers import Input, Dense, Convolution2D, MaxPooling2D
 from keras.models import Model
 import matplotlib
 matplotlib.use('qt5agg')
@@ -8,6 +8,7 @@ import numpy as np
 import data
 import os
 import math
+import warnings
 import skimage.io as io
 from random import randint
 import argparse
@@ -37,7 +38,7 @@ if (weights_filepath):
 
 def createModel():
     # Input placeholder
-    original = Input(shape=(32, 32, 4))
+    original = Input(shape=(None, None, 4))
 
     # Model layer stack
     x = original
@@ -105,6 +106,9 @@ else:
     test_predictions = hintbot.predict(x_test).clip(0,255).astype(np.uint8)
 
 # Save results on test set to a folder
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    io.imsave
 if not os.path.exists(args.predictionfolder):
     os.makedirs(args.predictionfolder)
 for i in range(0, len(test_predictions)):
