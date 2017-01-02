@@ -14,6 +14,8 @@ targetImages = []
 # and the small version of the image to the result array
 def loadImages(datadir, maxDirectoryCount=10, split=0.9):
     for dirPath, dirNames, fileNames in os.walk(datadir):
+        fileNames = [f for f in fileNames if not f[0] == '.']
+        dirNames[:] = [d for d in dirNames if not d[0] == '.']
         if (maxDirectoryCount != 0):
             fullSizeFileNames = [fileName for fileName in fileNames if fileName.endswith("@2x.png") and (fileName.replace("@2x","") in fileNames)]
             for fullSizeFileName in fullSizeFileNames:
