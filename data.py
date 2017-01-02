@@ -1,6 +1,6 @@
 import os
 import skimage.io as io
-# from sklearn.utils import shuffle
+from sklearn.utils import shuffle
 import numpy as np
 import colorutils
 
@@ -33,7 +33,7 @@ def loadImages(datadir, maxDirectoryCount=10, split=0.9):
     x_test = x[int(len(x) * split):]
     y_test = y[int(len(y) * split):]
     # Shuffle training data so that repeats aren't in the same batch
-    # x_train, y_train = shuffle(x_train, y_train, random_state=0)
+    x_train, y_train = shuffle(x_train, y_train, random_state=0)
     return (x_train, y_train, x_test, y_test)
 
 def sliceImages(inputImage, targetImage):
