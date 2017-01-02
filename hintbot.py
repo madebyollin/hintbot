@@ -80,6 +80,7 @@ def train(model):
         hintbot.save_weights(save_weights_filepath, overwrite=True)
 
 def predictsinglefile(model, filepath):
+    filepath = os.path.abspath(filepath)
     assert os.path.isfile(filepath), "File " + str(filepath) + " does not exist"
     outputpath = os.path.dirname(filepath) + "/" + os.path.splitext(os.path.basename(filepath))[0] + "_hinted.png"
     original = io.imread(filepath)
@@ -87,6 +88,7 @@ def predictsinglefile(model, filepath):
     io.imsave(outputpath, hinted)
 
 def predicticonset(model, filepath):
+    filepath = os.path.abspath(filepath)
     # Make sure file exists
     assert os.path.isfile(filepath), "File " + str(filepath) + " does not exist"
 

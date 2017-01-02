@@ -3,6 +3,8 @@ input_iconsets/
 
 # weights
 *.h5
+# images
+*.xcf
 # pythonHistory
 pythonHistory
 
