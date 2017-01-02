@@ -17,7 +17,6 @@ Here's how Hintbot performs at present (images shown are from test data; the mod
 ![](readme_images/model_progress.png)
 
 The model output is *substantially* better than a standard downscale.  However, it still falls short of human performance (for now).
-This is not an indicator that the human performance is unreachable–rather, it's a sign that this project is still young.
 
 **Wait, how does it work in-browser?**
 

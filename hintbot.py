@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from keras.layers import Input, Dense, Convolution2D, MaxPooling2D
+from keras.layers import Input, Dense, Convolution2D, MaxPooling2D, AveragePooling2D
 from keras.models import Model
 import matplotlib
 matplotlib.use('qt5agg')
@@ -23,7 +23,6 @@ add_arg("--weights", default=None, type=str, help='h5 file to read/write weights
 add_arg("--loadweights", default="weights.h5", type=str, help='h5 file to read weights from.')
 add_arg("--saveweights", default="weights.h5", type=str, help='h5 file to write weights to.')
 add_arg("--epochs", default=10, type=int, help='h5 file to write weights to.')
-add_arg("--hsva", action='store_true', help='Use HSVA')
 add_arg("--predictionfolder", default="predictions", type=str, help="Folder to save predictions in")
 add_arg("--updateweb", action='store_true', help='Update the model/weights stored in /web/')
 
@@ -43,14 +42,14 @@ def createModel():
     # Model layer stack
     x = original
     # x = ZeroPadding2D(padding=(2, 2))(x)
-    x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
-    x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
-    x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
-    x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
-    x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
-    x = Convolution2D(16, 3, 3, activation='relu', border_mode='same')(x)
-    x = MaxPooling2D((2, 2), border_mode='same')(x)
-    x = Convolution2D(4, 3, 3, activation='relu', border_mode='same')(x)
+    x = Convolution2D(16, 3, 3, activation='linear', border_mode='same')(x)
+    x = Convolution2D(16, 3, 3, activation='linear', border_mode='same')(x)
+    x = Convolution2D(16, 3, 3, activation='linear', border_mode='same')(x)
+    x = Convolution2D(16, 3, 3, activation='linear', border_mode='same')(x)
+    x = Convolution2D(16, 3, 3, activation='linear', border_mode='same')(x)
+    x = Convolution2D(16, 3, 3, activation='linear', border_mode='same')(x)
+    x = AveragePooling2D((2, 2), border_mode='valid')(x)
+    x = Convolution2D(4, 3, 3, activation='linear', border_mode='same')(x)
     # x = Cropping2D(cropping=((1, 1), (1,1)))(x)
     downscaled = x
 
@@ -80,17 +79,8 @@ if len(args.files) > 0:
     x_test = np.asarray([io.imread(filepath) for filepath in args.files])
 else:
     # Prepare input
-    if (args.hsva):
-        x,y = data.loadImagesHSVA("input_iconsets", -1)
-    else:
-        x,y = data.loadImages("input_iconsets", -1)
+    x_train, y_train, x_test, y_test = data.loadImages("input_iconsets", -1)
 
-    # Split input into training/test
-    split = .9
-    x_train = x[:int(len(x) * split)]
-    y_train = y[:int(len(y) * split)]
-    x_test = x[int(len(x) * split):]
-    y_test = y[int(len(y) * split):]
 
     hintbot.fit(x_train, y_train, nb_epoch=args.epochs, batch_size=8, shuffle=True, validation_data=(x_test, y_test))
 
@@ -100,10 +90,7 @@ else:
         hintbot.save_weights(save_weights_filepath, overwrite=True)
 
 # Predict test set
-if (args.hsva):
-    test_predictions = [colorutils.HSVAtoRGBA(image) for image in hintbot.predict(x_test)]
-else:
-    test_predictions = hintbot.predict(x_test).clip(0,255).astype(np.uint8)
+test_predictions = hintbot.predict(x_test).clip(0,255).astype(np.uint8)
 
 # Save results on test set to a folder
 with warnings.catch_warnings():
