@@ -12,14 +12,15 @@
 <body>
     <div id="spinner"></div>
     <div id="fileInputWrapper" class="hidden">
-        <label for="fileInput" id="inputLabel" class="button bigButton">Upload a 32x32.png</label>
+        <label for="fileInput" id="inputLabel" class="button bigButton">Upload a 32×32.png</label>
         <input id="fileInput" type="file" accept="png"/>
     </div>
     <div id="display" class="hidden">
+        <img id="original" />
+        <img id="hinted" />
     </div>
     <div id="description" class="hidden">
-        HintBot is a work-in-progress icon-hinter that uses an in-browser convolutional neural network.<br />
-        You can read more about HintBot <a href="https://github.com/madebyollin/hintbot">on its GitHub page.</a>
+        HintBot hints icons in the browser.</a>
     </div>
     <div id="footer">
         Made by <a href="https://www.madebyollin.com">Ollin</a>.  Fork on <a href="https://github.com/madebyollin/hintbot">GitHub</a>.
