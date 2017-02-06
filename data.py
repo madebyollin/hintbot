@@ -1,6 +1,7 @@
 import os
 import skimage.io as io
 from sklearn.utils import shuffle
+from scipy.misc import imresize
 import numpy as np
 import colorutils
 
@@ -33,7 +34,7 @@ def loadImages(datadir, maxDirectoryCount=10, split=0.9):
     x_test = x[int(len(x) * split):]
     y_test = y[int(len(y) * split):]
     # Shuffle training data so that repeats aren't in the same batch
-    x_train, y_train = shuffle(x_train, y_train, random_state=0)
+    # x_train, y_train = shuffle(x_train, y_train, random_state=0)
     return (x_train, y_train, x_test, y_test)
 
 def sliceImages(inputImage, targetImage):
@@ -45,13 +46,18 @@ def sliceImages(inputImage, targetImage):
             inputSlice = inputImage[x*sliceSize:(x+1)*sliceSize,y*sliceSize:(y+1)*sliceSize]
             targetSlice = targetImage[x*sliceSize//2:(x+1)*sliceSize//2,y*sliceSize//2:(y+1)*sliceSize//2]
             # only add slices if they're not just empty space
-            if (np.any(targetSlice)):
+            # if (np.any(targetSlice)):
                 # Reweight smaller sizes
                 # for i in range(0,max(1,128//inputImage.shape[1])**2):
-                inputSlices.append(inputSlice)
-                targetSlices.append(targetSlice)
-                # Augment data with flips
-                inputSlices.append(np.fliplr(inputSlice))
-                targetSlices.append(np.fliplr(targetSlice))
+            inputSlices.append(inputSlice)
+            targetSlices.append(targetSlice)
+                # inputSlices.append(np.fliplr(inputSlice))
+                # targetSlices.append(np.fliplr(targetSlice))
+                # inputSlices.append(np.flipud(inputSlice))
+                # targetSlices.append(np.flipud(targetSlice))
+
+                    # naiveSlice = imresize(inputSlice, 0.5)
+                    # deltaSlice = targetSlice - naiveSlice
+                    # targetSlices.append(deltaSlice)
     # return two arrays of images in a tuple
     return (inputSlices, targetSlices)
