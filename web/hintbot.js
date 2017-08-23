@@ -26,21 +26,28 @@ function displayImage(image, img, w, h, scale) {
     // update canvas with new data
     ctx.putImageData(idata, 0, 0);
     // rescale to desired scale
-    
+
     var dataUri = canvas.toDataURL();
     img.src = dataUri;
 }
 
 function base64toRGBA(image) {
     // Frankensteined from http://stackoverflow.com/questions/8751020/how-to-get-a-pixels-x-y-coordinate-color-from-an-image
-    var img = document.createElement("img");
-    img.src = image;
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
-    var imageData = canvas.getContext('2d').getImageData(0, 0, img.width, img.height).data;
-    return imageData;
+    // Bugfix from https://taditdash.wordpress.com/2016/10/04/uncaught-indexsizeerror-failed-to-execute-getimagedata-on-canvasrenderingcontext2d-the-source-width-is-0/
+    return new Promise((resolve, reject) => {
+        var img = document.createElement("img");
+        img.src = image;
+        img.onload = () => {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width || img.naturalWidth;
+            canvas.height = img.height || img.naturalHeight;
+            console.log("Canvas size", canvas.width, canvas.height);
+            console.log("image", image, "img", img);
+            canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+            var imageData = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+            resolve(imageData);
+        }
+    });
 }
 
 function hide(id) {
@@ -69,21 +76,24 @@ function init() {
             var reader = new FileReader();
             reader.onload = function() {
                 var base64 = this.result;
-                var rgba = base64toRGBA(base64);
-                var flatrgba = new Float32Array([].concat.apply([], rgba));
+                base64toRGBA(base64).then((rgba) => {
+                    var flatrgba = new Float32Array([].concat.apply([], rgba));
 
-                var original = document.getElementById("original");
-                var hinted = document.getElementById("hinted");
+                    var original = document.getElementById("original");
+                    var hinted = document.getElementById("hinted");
 
-                displayImage(new Uint8ClampedArray(flatrgba), original, 32, 32, 0.5);
+                    displayImage(new Uint8ClampedArray(flatrgba), original, 32, 32, 0.5);
 
-                const inputData = {'icon_goes_here': flatrgba};
-                hintbot.predict(inputData).then(outputData => {
-                    var prediction = new Uint8ClampedArray(getFirstProperty(outputData));
-                    displayImage(prediction, hinted, 16, 16, 1.0);
-                    show("display");
-                }).catch(err => {
-                    console.log(err);
+                    const inputData = {
+                        'icon_goes_here': flatrgba
+                    };
+                    hintbot.predict(inputData).then(outputData => {
+                        var prediction = new Uint8ClampedArray(getFirstProperty(outputData));
+                        displayImage(prediction, hinted, 16, 16, 1.0);
+                        show("display");
+                    }).catch(err => {
+                        console.log(err);
+                    });
                 });
             }
 
