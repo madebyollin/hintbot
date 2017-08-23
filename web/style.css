@@ -132,7 +132,6 @@ a.button input {
 }
 
 #display img {
-    image-rendering: pixelated;
     width:16px;
     height:16px
 }

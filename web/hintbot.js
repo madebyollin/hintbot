@@ -25,9 +25,9 @@ function displayImage(image, img, w, h, scale) {
 
     // update canvas with new data
     ctx.putImageData(idata, 0, 0);
-    // rescale to desired scale
 
     var dataUri = canvas.toDataURL();
+
     img.src = dataUri;
 }
 
